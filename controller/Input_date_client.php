@@ -7,8 +7,8 @@
         Date: 15.09.21
     ------------------------------------------------------------------------------------*/
 
-    require_once('../functions/config.php');
-    require_once('../db/insert_client.php');
+    require_once('functions/config.php');
+    require_once(src.'db/insert_client.php');
 
     // Variables' declaration. ---------------------------------------------------------
     $name = (string) null;
@@ -38,19 +38,12 @@
 
         // Testing if the oblitated inputs are empty. If empty, an alert (javascript) is shown.
         if ($name == null || $rg == null || $cpf == null) {
-            echo("<script>
-                    alert('".ERROR_EMPTY_BOX."')
-                    window.history.back()
-                </script>"
-            );
+            // window.history.back() -> Javascript method that retroceeds once the navigator.
+            echo("<script>alert('" . ERROR_EMPTY_BOX. "'); window.history.back(); </script>");
+            
         // Testing if the inputs have more characters than the DB allows.
         } elseif (strlen($name) > 100 || strlen($rg) > 15 || strlen($cpf) > 20) {
-            echo("<script>
-                    alert('".ERROR_MAX_LENGTH."')
-                    window.history.back()
-                </script>"
-                // window.history.back() -> Javascript method that retroceeds once the navigator.
-            );
+            echo("<script>alert('" . ERROR_MAX_LENGTH . "'); window.history.back(); </script>");
         } else {
             // Array to storage the client date in a singular date.
             $clientDate = array(
@@ -64,7 +57,12 @@
             );
             // Inserting the array to the function that sends the script to the mySQL datebase.
             // This function is getting imported from the " require_once('../db/insert_client.php'); ".
-            insertInMySQL($clientDate);
+
+            if (insertInMySQL($clientDate)) {
+                echo("<script> alert('" . MSG_QUERY_TRUE . "'); window.location.href='../index.php'; </script>");
+            } else {
+                echo("<script> alert('" . ERROR_QUERY_FALSE . "'); window.history.back(); </script>");
+            }
         }
     }
 ?>

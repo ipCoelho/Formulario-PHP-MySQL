@@ -5,10 +5,10 @@
         Date: 15.09.21
     -------------------------------------------------------------------------------------------*/
 
-    require_once('../db/mySQLconnection.php');
+    require_once(src.'db/mySQLconnection.php');
 
     function insertInMySQL($arrayCliente) {
-        /* What is the $sql variable? (...)
+        /* What's this $sql variable? (...)
          * The variable $sql is created and used to send a script to the mySQL database,
          * that insert the values from the web page to the database.
          * 
@@ -33,7 +33,14 @@
         // echo($sql);
 
         $connection = mySQLconnection();
-        mysqli_query($connection, $sql);
+        
+        /* What does this if do? (...)
+            If the mysqli_query() works properly, the if will return a true to the caller,
+            otherwise, it will return false */
+        if (mysqli_query($connection, $sql))
+            return true;
+        else 
+            return false;
     }
 
 

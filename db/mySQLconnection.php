@@ -8,12 +8,6 @@
 
     // Function to open the connection with the Datebase mySQL.
     function mySQLconnection() {
-        /* Why is this being imported? (...)
-            " require_once('../functions/config.php'); " is being imported to get those variables
-            that contains the information of the datebase, which is needed to make the connection
-            between the backend and the datebase.*/
-        require_once('../functions/config.php');
-        
         // Variable's declaration to connect with the Datebase.
         $server = (string) DB_SERVER;
         $user = (string) DB_USER;

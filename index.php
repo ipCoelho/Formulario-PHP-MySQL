@@ -1,3 +1,7 @@
+<?php
+    require_once('functions/config.php');
+    require_once(src.'db/mySQLconnection.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,8 +12,7 @@
     <title>Cadastro</title>
 </head>
     <body>
-        <!-- 
-            Tipos de 'type' na tag input.
+        <!-- Tipos de 'type' na tag input (...)
 
             <input type="button"> -> Botão
             <input type="checkbox"> -> Caixa de checagem
@@ -34,8 +37,8 @@
             <input type="url"> -> Input para endereço Url
             <input type="week"> -> Input para selecionar semana
 
-            fonte: https://www.w3schools.com/html/html_form_input_types.asp
-        -->
+            fonte: https://www.w3schools.com/html/html_form_input_types.asp -->
+            
         <div id="cadastro"> 
             <div id="cadastroTitulo"> 
                 <h1> Cadastro de Contatos </h1>
