@@ -7,7 +7,7 @@
         Date: 15.09.21
     ------------------------------------------------------------------------------------*/
 
-    require_once('functions/config.php');
+    require_once('../functions/config.php');
     require_once(src.'db/insert_client.php');
 
     // Variables' declaration. ---------------------------------------------------------
@@ -36,7 +36,7 @@
             16.09.21
         ---------------------------------------------------------------------------------*/
 
-        // Testing if the oblitated inputs are empty. If empty, an alert (javascript) is shown.
+        // Testing if the obligated inputs are empty. If empty, an alert (javascript) is shown.
         if ($name == null || $rg == null || $cpf == null) {
             // window.history.back() -> Javascript method that retroceeds once the navigator.
             echo("<script>alert('" . ERROR_EMPTY_BOX. "'); window.history.back(); </script>");

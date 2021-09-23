@@ -1,6 +1,6 @@
 <?php
     /* ----------------------------------------------------------------------------
-        Function: Archive for setting the const's system's settings.
+        Function: Archive for setting the consts and system's settings.
         Responsable: Israel
         Date: 15.09.2021
     -------------------------------------------------------------------------------*/

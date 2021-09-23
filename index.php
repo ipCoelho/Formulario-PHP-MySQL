@@ -1,6 +1,11 @@
 <?php
     require_once('functions/config.php');
-    require_once(src.'db/mySQLconnection.php');
+    // ------------------------------------------------------------------------------
+    require_once(src.'/db/mySQLconnection.php');
+    mySQLconnection();
+    // ------------------------------------------------------------------------------
+    require_once(src.'/controller/list_date_client.php');
+    // ------------------------------------------------------------------------------
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -124,16 +129,23 @@
                     <td class="tblColunas destaque"> Email </td>
                     <td class="tblColunas destaque"> Opções </td>
                 </tr>
+                <?php
+                    $clientDate = showClients();
+                    while ($rsClients = mysqli_fetch_assoc($clientDate)) {
+                ?>
                 <tr id="tblLinhas">
-                    <td class="tblColunas registros"></td>
-                    <td class="tblColunas registros"></td>
-                    <td class="tblColunas registros"></td>
+                    <td class="tblColunas registros"><?=$rsClients['nome']?></td>
+                    <td class="tblColunas registros"><?=$rsClients['celular']?></td>
+                    <td class="tblColunas registros"><?=$rsClients['email']?></td>
                     <td class="tblColunas registros">
                         <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
                         <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                         <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
                     </td>
                 </tr>
+                <?php 
+                    } 
+                ?>
             </table>
         </div>
     </body>
