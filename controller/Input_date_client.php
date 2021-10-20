@@ -9,6 +9,7 @@
 
     require_once('../functions/config.php');
     require_once(src.'db/insert_client.php');
+    require_once(src.'db/update_client.php');
 
     // Variables' declaration. ---------------------------------------------------------
     $name = (string) null;
@@ -30,6 +31,8 @@
         $cel = $_POST['txtCelular'];
         $email = $_POST['txtEmail'];
         $obs = $_POST['txtObs'];
+        // id.
+        $id = (int) 0;
 
         /*-------------------------------------------------------------------------------
             Continuing...
@@ -55,13 +58,45 @@
                 'email' => $email,
                 'obs' => $obs,
             );
-            // Inserting the array to the function that sends the script to the mySQL datebase.
-            // This function is getting imported from the " require_once('../db/insert_client.php'); ".
 
-            if (insertInMySQL($clientDate)) {
-                echo("<script> alert('" . MSG_QUERY_TRUE . "'); window.location.href='../index.php'; </script>");
+            // Validation to verify if the URL is sending a variable called 'id'.
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
             } else {
-                echo("<script> alert('" . ERROR_QUERY_FALSE . "'); window.history.back(); </script>");
+                $id = 0;
+            }
+
+            // Validate if it'd insert or update on the datebase.
+            if (strtoupper($_GET['buttonMode']) == 'SALVAR') {
+                // Inserting the array to the function that sends the script to the mySQL datebase.
+                // This function is getting imported from the " require_once('../db/insert_client.php'); ".
+                if (insertInMySQL($clientDate)) {
+                    echo("<script> alert('" . MSG_QUERY_TRUE . "'); window.location.href='../index.php'; </script>");
+                } else {
+                    echo("<script> alert('" . ERROR_QUERY_FALSE . "'); window.history.back(); </script>");
+                }
+            } elseif (strtoupper($_GET['buttonMode']) == 'ATUALIZAR') {
+                $clientDate = array(
+                    'nome' => $name,
+                    'rg' => $rg,
+                    'cpf' => $cpf,
+                    'telefone' => $tel,
+                    'celular' => $cel,
+                    'email' => $email,
+                    'obs' => $obs,
+                    'id' => $id
+                );
+                if (updateInMySQL($clientDate)) {
+                    echo("<script> alert('" . MSG_UPDATE_TRUE . "'); window.location.href='../index.php'; </script>");
+                } else {
+                    echo("<script> alert('" . MSG_UPDATE_FALSE . "'); window.history.back(); </script>");
+                }
+            } else {
+                echo("
+                    <script>
+                        alert('ERRO AO PEGAR VALOR DO BOTÃO'); window.history.back(); 
+                    </script>
+                ");
             }
         }
     }

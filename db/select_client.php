@@ -23,5 +23,14 @@
         return $select;
     }
 
+    function searchFromTheDatebase($id) {
+        $scriptSql = "select * from tblcliente where idcliente=".$id;
+
+        $connection = mySQLconnection();
+        $select = mysqli_query($connection, $scriptSql);
+        
+        return $select;
+    }
+
 
 ?>

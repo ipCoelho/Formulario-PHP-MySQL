@@ -15,14 +15,18 @@
     // ----------------------------------------------------------------------------
 
     // System's Error Messages
-    const ERROR_DB_CONNECTION = "Não foi possível realizar a conexão com o Banco de Dados, entre em contato com o Adminstrador do Sistema.";
     const ERROR_EMPTY_BOX = "Os campos obrigatórios devem ser preenchidos.";
     const ERROR_MAX_LENGTH = "Ensira uma quantidade de caracteres válida.";
-    const ERROR_QUERY_FALSE = "Dados não registrados no Banco de Dados!";
     // ----------------------------------------------------------------------------
-
+    
     // Messages to the User
+    const ERROR_QUERY_FALSE = "Dados não registrados no Banco de Dados!";
+    const ERROR_DB_CONNECTION = "Não foi possível realizar a conexão com o Banco de Dados, entre em contato com o Adminstrador do Sistema.";
     const MSG_QUERY_TRUE = "Dados registrados no Banco de Dados com sucesso!";
+    const DB_DELETE_TRUE = "Registro excluído com sucesso do Banco de Dados.";
+    const DB_DELETE_FALSE = "Erro ao excluir registro do Banco de Dados.";
+    const MSG_UPDATE_TRUE = "Dados atualizados no Banco de Dados com sucesso!";
+    const MSG_UPDATE_FALSE = "Erro ao atualizar registro do Banco de Dados.";
     // ----------------------------------------------------------------------------
     
 ?>
