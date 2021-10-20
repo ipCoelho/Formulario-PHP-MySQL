@@ -31,40 +31,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Modal Background to none.
+            $('#modal-background').css('display' , 'none')
+            // Open Modal:
+            $('.pesquisar').click(function() {$('#modal-background').fadeIn(400)} )
+            // Close Modal:
+            $('#modal-exit').click(function() {
+                $('#modal-background').fadeOut(400)
+            })
+        })
+    </script>
     <title>Cadastro</title>
 </head>
     <body>
         <div id="modal-background">
+            <span id="modal-exit">Fechar</span>
             <div id="modal-conteiner">
             </div>
         </div>
-        <!-- Tipos de 'type' na tag input (...)
-
-            <input type="button"> -> Botão
-            <input type="checkbox"> -> Caixa de checagem
-            <input type="color"> -> Abre uma aba para selecionar uma cor
-            <input type="date"> -> Input para selecionar a data
-            <input type="datetime-local"> -> Data e hora do local
-            <input type="email"> -> e-mail (precisa ter @)
-            <input type="file"> -> Abre uma janela para anexar um arquivo
-            <input type="hidden"> -> Input não visivel ou alterável para o usuário que envia dados para o banco 
-            <input type="image">
-            <input type="month"> -> Input para escolha do mês
-            <input type="number"> -> Input que só aceita int
-            <input type="password"> -> Input para senha (os caracteres são criptografados)
-            <input type="radio"> -> Input do tipo radio
-            <input type="range"> -> Barra de rolagem horizontal
-            <input type="reset">
-            <input type="search">
-            <input type="submit">
-            <input type="tel"> -> Input para telefones
-            <input type="text"> -> Input para texto
-            <input type="time"> -> Input para selecionar hora
-            <input type="url"> -> Input para endereço Url
-            <input type="week"> -> Input para selecionar semana
-
-            fonte: https://www.w3schools.com/html/html_form_input_types.asp -->
-            
         <div id="cadastro"> 
             <div id="cadastroTitulo"> 
                 <h1> Cadastro de Contatos </h1>
@@ -165,9 +152,9 @@
                                 <a onclick="return confirm('Tem certeza que deseja excluir o registro?')" href="controller/delete_date_client.php?id=<?=$rsClients['idcliente']?>">
                                     <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                                 </a>
-                                <a href="">
+                                <!-- <a href=""> -->
                                     <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
-                                </a>
+                                <!-- </a> -->
                             </td>
                         </tr>
                 <?php 

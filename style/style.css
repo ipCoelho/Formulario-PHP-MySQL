@@ -221,3 +221,6 @@ input[type=email]:hover{
     height: 60vh;
     background-color: aquamarine;
 }
+#modal-exit{
+    cursor: pointer;
+}
